@@ -1,0 +1,430 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillUp - Top Courses</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #07505c, #001414);
+            color: white;
+            min-height: 100vh;
+            padding: 10px 30px 50px;
+        }
+
+        /* Main section */
+        .courses-section {
+            max-width: 960px;
+            margin: auto;
+        }
+
+        /* Explore button */
+        .explore-btn {
+            display: block;
+            margin: 0 auto 40px;
+            padding: 12px 22px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(to right, #08a8f5, #66e8cb);
+            color: #001b25;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Navigation tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            border-bottom: 1px solid #31535a;
+            margin-bottom: 20px;
+        }
+
+        .tab {
+            padding: 12px 22px;
+            color: #a8b9c0;
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .tab.active {
+            color: white;
+            font-weight: bold;
+            border-bottom: 3px solid #08b9ff;
+        }
+
+        /* Course grid */
+        .course-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 36px 42px;
+        }
+
+        /* Individual card */
+        .course-card {
+            background: rgba(0, 15, 18, 0.85);
+            border: 1px solid #31464a;
+            border-radius: 12px;
+            padding: 15px;
+            min-height: 188px;
+            position: relative;
+        }
+
+        /* Certification badge */
+        .badge {
+            position: absolute;
+            top: -26px;
+            left: 0;
+            background: linear-gradient(to right, #ec3b9b, #f5a623);
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 5px 9px;
+            border-radius: 4px;
+        }
+
+        /* Course title */
+        .course-title {
+            font-size: 14px;
+            line-height: 1.4;
+            padding-right: 35px;
+            margin-bottom: 8px;
+        }
+
+        /* Play icon */
+        .play-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            height: 29px;
+            width: 29px;
+            background: #263b3e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-btn::after {
+            content: "";
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+            border-left: 10px solid white;
+            margin-left: 3px;
+        }
+
+        /* Course details */
+        .course-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 10px;
+            color: #e1e9eb;
+            margin-bottom: 16px;
+        }
+
+        .course-description {
+            color: #aab7b9;
+            font-size: 11px;
+            line-height: 1.4;
+            height: 48px;
+            overflow: hidden;
+        }
+
+        /* Instructor section */
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 14px;
+        }
+
+        .instructor {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-size: 9px;
+        }
+
+        .avatar {
+            width: 21px;
+            height: 21px;
+            background: #087f91;
+            border: 2px solid #d8eeee;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 9px;
+        }
+
+        .details-link {
+            color: #00baff;
+            text-decoration: none;
+            font-size: 10px;
+        }
+
+        /* View all card */
+        .view-all {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .view-all h2 {
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .arrow {
+            color: #00baff;
+            font-size: 30px;
+            margin-top: 5px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 750px) {
+            .course-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 15px;
+            }
+
+            .course-container {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .tabs {
+                gap: 0;
+            }
+
+            .tab {
+                padding: 12px 8px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="courses-section">
+
+        <!-- Explore Courses Button -->
+        <button class="explore-btn">Explore Courses</button>
+
+        <!-- Course Navigation -->
+        <div class="tabs">
+            <a href="#" class="tab active">Top Courses</a>
+            <a href="#" class="tab">Career Tracks</a>
+            <a href="#" class="tab">Learning Paths</a>
+            <a href="#" class="tab">Certifications</a>
+        </div>
+
+        <!-- Course Cards -->
+        <div class="course-container">
+
+            <!-- Course 1 -->
+            <div class="course-card">
+
+                <span class="badge">✿ Certification Prep</span>
+                <div class="play-btn"></div>
+
+                <h3 class="course-title">
+                    AWS Certified Cloud Practitioner (CLF-C02)
+                </h3>
+
+                <div class="course-meta">
+                    <span>▰ Beginner</span>
+                    <span>◷ 15.00 Hours</span>
+                </div>
+
+                <p class="course-description">
+                    Prepare for AWS Certified Cloud Practitioner exam
+                    with comprehensive coverage of cloud fundamentals,
+                    security, services, billing, and more.
+                </p>
+
+                <div class="course-footer">
+                    <div class="instructor">
+                        <span class="avatar">MF</span>
+                        <span>Michael Forrester</span>
+                    </div>
+
+                    <a href="course-details.html" class="details-link">
+                        Details →
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Course 2 -->
+            <div class="course-card">
+
+                <span class="badge">✿ Certification Prep</span>
+                <div class="play-btn"></div>
+
+                <h3 class="course-title">
+                    AWS Solutions Architect Associate Certification
+                </h3>
+
+                <div class="course-meta">
+                    <span>▰ Associate</span>
+                    <span>◷ 48.00 Hours</span>
+                </div>
+
+                <p class="course-description">
+                    Prepare for AWS Solutions Architect Associate exam
+                    with scalable designs across compute, storage,
+                    networking, security, and more.
+                </p>
+
+                <div class="course-footer">
+                    <div class="instructor">
+                        <span class="avatar">MF</span>
+                        <span>Michael Forrester</span>
+                    </div>
+
+                    <a href="course-details.html" class="details-link">
+                        Details →
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Course 3 -->
+            <div class="course-card">
+
+                <span class="badge">✿ Certification Prep</span>
+                <div class="play-btn"></div>
+
+                <h3 class="course-title">
+                    AWS Certified AI Practitioner
+                </h3>
+
+                <div class="course-meta">
+                    <span>▰ Beginner</span>
+                    <span>◷ 8.20 Hours</span>
+                </div>
+
+                <p class="course-description">
+                    Master AWS Certified AI Practitioner concepts
+                    through hands-on modules and practical AWS applications.
+                </p>
+
+                <div class="course-footer">
+                    <div class="instructor">
+                        <span class="avatar">MF</span>
+                        <span>Michael Forrester</span>
+                    </div>
+
+                    <a href="course-details.html" class="details-link">
+                        Details →
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Course 4 -->
+            <div class="course-card">
+
+                <span class="badge">✿ Certification Prep</span>
+                <div class="play-btn"></div>
+
+                <h3 class="course-title">
+                    Certified Kubernetes Administrator (CKA)
+                </h3>
+
+                <div class="course-meta">
+                    <span>▰ Associate</span>
+                    <span>◷ 24.98 Hours</span>
+                </div>
+
+                <p class="course-description">
+                    Prepare for the Kubernetes Administrator
+                    certification with live practice tests right in
+                    your browser with no extra hassle.
+                </p>
+
+                <div class="course-footer">
+                    <div class="instructor">
+                        <span class="avatar">MM</span>
+                        <span>Mumshad Mannambeth</span>
+                    </div>
+
+                    <a href="course-details.html" class="details-link">
+                        Details →
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Course 5 -->
+            <div class="course-card">
+
+                <span class="badge">✿ Certification Prep</span>
+                <div class="play-btn"></div>
+
+                <h3 class="course-title">
+                    Certified Kubernetes Security Specialist (CKS)
+                </h3>
+
+                <div class="course-meta">
+                    <span>▰ Professional</span>
+                    <span>◷ 08.75 Hours</span>
+                </div>
+
+                <p class="course-description">
+                    Prepare for CKS certification: Implement
+                    comprehensive security practices for cloud-native
+                    applications on Kubernetes.
+                </p>
+
+                <div class="course-footer">
+                    <div class="instructor">
+                        <span class="avatar">MM</span>
+                        <span>Mumshad Mannambeth</span>
+                    </div>
+
+                    <a href="course-details.html" class="details-link">
+                        Details →
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- View All Courses -->
+            <div class="course-card view-all">
+
+                <h2>
+                    View All<br>
+                    Courses
+                </h2>
+
+                <span class="arrow">⟶</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+</html>
