@@ -1,0 +1,560 @@
+
+/* =========================
+   GLOBAL STYLES
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #05090d;
+    color: white;
+}
+
+
+/* =========================
+   NAVIGATION BAR
+========================= */
+
+nav {
+    width: 100%;
+    min-height: 85px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 8%;
+
+    background: rgba(5, 9, 13, 0.95);
+
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    border-bottom: 1px solid #1b242b;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: #00d9f5;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: #ddd;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+    white-space: nowrap;
+}
+
+.nav-links a:hover {
+    color: #00d9f5;
+}
+
+.business {
+    color: #f5a623 !important;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-buttons button {
+    padding: 12px 25px;
+
+    border-radius: 30px;
+    border: 1px solid #777;
+
+    background: transparent;
+    color: white;
+
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.nav-buttons .signup {
+    background: #13c8f5;
+    color: black;
+    border: none;
+}
+
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+    min-height: 850px;
+    padding: 75px 8% 60px;
+    text-align: center;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            ellipse at center bottom,
+            #073344,
+            #05090d 75%
+        );
+
+    background-size:
+        25px 25px,
+        25px 25px,
+        cover;
+}
+
+.hero h1 {
+    font-size: 64px;
+    font-weight: 800;
+    margin-bottom: 25px;
+
+    background: linear-gradient(
+        90deg,
+        #13b9f5,
+        #21e0d5
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero > p {
+    font-size: 21px;
+    line-height: 1.6;
+    color: #f1f1f1;
+}
+
+
+/* =========================
+   HERO BUTTONS
+========================= */
+
+.hero-buttons {
+    margin: 30px 0 20px;
+
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.hero-buttons a {
+    padding: 17px 32px;
+
+    border-radius: 40px;
+    text-decoration: none;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    color: white;
+    border: 1px solid #aaa;
+
+    transition: 0.3s;
+}
+
+.hero-buttons .primary {
+    background: linear-gradient(
+        90deg,
+        #0db8f5,
+        #63e8c9
+    );
+
+    color: #001018;
+    border: none;
+}
+
+.hero-buttons a:hover {
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   FEATURES
+========================= */
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+
+    color: #c9d6dc;
+    margin-bottom: 55px;
+}
+
+.features span::before {
+    content: "✔";
+    color: #14d9e9;
+    margin-right: 8px;
+}
+
+
+/* =========================
+   LAB CONTAINER
+========================= */
+
+.lab-container {
+    max-width: 1020px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+
+    background: #050505;
+
+    border-radius: 15px;
+    padding: 12px;
+    gap: 15px;
+
+    text-align: left;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================
+   QUIZ SECTION
+========================= */
+
+.quiz {
+    background: #151515;
+
+    padding: 25px;
+    border-radius: 12px;
+
+    min-height: 360px;
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+
+    color: #aaa;
+    margin-bottom: 25px;
+
+    font-size: 14px;
+}
+
+.progress {
+    height: 5px;
+    background: #333;
+
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.progress span {
+    display: block;
+
+    width: 30%;
+    height: 100%;
+
+    background: #16dba8;
+    border-radius: 10px;
+}
+
+.quiz h3 {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.answer {
+    width: 100%;
+
+    padding: 13px;
+    margin-bottom: 10px;
+
+    background: #292929;
+    color: white;
+
+    border: none;
+    border-radius: 30px;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.answer:hover {
+    background: #414141;
+}
+
+.answer.correct {
+    background: #087d49;
+    border: 1px solid #20e89a;
+}
+
+.answer.wrong {
+    background: #8b2525;
+}
+
+
+/* =========================
+   TERMINAL SECTION
+========================= */
+
+.terminal {
+    background: #292a36;
+
+    border-radius: 12px;
+    overflow: hidden;
+
+    min-height: 360px;
+}
+
+.terminal-header {
+    padding: 18px;
+
+    background: #080808;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 14px;
+}
+
+.terminal-body {
+    padding: 25px;
+
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.8;
+
+    color: #e5e5e5;
+}
+
+.terminal-body .command {
+    color: #39e4a4;
+}
+
+
+/* =========================
+   ENROLLMENT AND RATING
+========================= */
+
+.social-proof {
+    max-width: 1020px;
+    margin: 35px auto 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: #ddd;
+}
+
+.enrolled {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.rating {
+    font-size: 20px;
+}
+
+.rating span {
+    color: white;
+    font-size: 26px;
+    margin-left: 10px;
+}
+
+
+/* =========================
+   COURSES SECTION
+========================= */
+
+.courses {
+    padding: 100px 8%;
+    text-align: center;
+
+    background: radial-gradient(
+        ellipse at top,
+        #073344,
+        #05090d 70%
+    );
+}
+
+.courses h2 {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.courses > p {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 45px;
+}
+
+
+/* =========================
+   COURSE CARDS
+========================= */
+
+.course-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+    max-width: 1100px;
+    margin: auto;
+}
+
+.course-card {
+    background: #111a22;
+
+    padding: 30px;
+
+    border: 1px solid #24343e;
+    border-radius: 15px;
+
+    text-align: left;
+    transition: 0.3s;
+}
+
+.course-card:hover {
+    transform: translateY(-8px);
+    border-color: #13c8f5;
+}
+
+.course-card h3 {
+    color: #13c8f5;
+
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.course-card p {
+    font-size: 15px;
+    line-height: 1.6;
+
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.course-card a {
+    color: #13c8f5;
+    text-decoration: none;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 30px;
+
+    text-align: center;
+
+    background: #05090d;
+    color: #888;
+
+    border-top: 1px solid #1b242b;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 1100px) {
+
+    nav {
+        padding: 0 4%;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 900px) {
+
+    nav {
+        padding: 0 4%;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+    }
+
+    .lab-container {
+        grid-template-columns: 1fr;
+    }
+
+    .course-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .social-proof {
+        flex-direction: column;
+        gap: 25px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .hero {
+        padding: 60px 5%;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero > p {
+        font-size: 17px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .features {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-buttons button {
+        padding: 10px 15px;
+    }
+
+    .courses h2 {
+        font-size: 27px;
+    }
+}
