@@ -1,0 +1,282 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DevOps Learning Platform</title>
+
+    <!-- Connect CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+
+    <nav>
+        <a href="#" class="logo">
+            ◈ <S>Skill</S><span>Up</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#" class="business">For Businesses</a>
+            <a href="#">Learn⌄</a>
+            <a href="#">Practice⌄</a>
+            <a href="#">Challenge⌄</a>
+            <a href="#">Pricing</a>
+            <a href="#">For Individuals</a>
+            <a href="#">Resources⌄</a>
+        </div>
+
+        <div class="nav-buttons">
+            <button>Sign in</button>
+            <button class="signup">Sign up</button>
+        </div>
+    </nav>
+
+
+    <!-- Main Hero Section -->
+
+    <section class="hero">
+
+        <h1>Build. Break. Fix. Learn.</h1>
+
+        <p>
+            Practice DevOps, Cloud &amp; AI in real environments.<br>
+            Build real skills and get certified.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#" class="primary">
+                Start Learning for Free
+            </a>
+
+            <a href="#">
+                Find Your Learning Path →
+            </a>
+        </div>
+
+        <div class="features">
+            <span>No Credit Card</span>
+            <span>Instant Labs</span>
+            <span>Start Free</span>
+        </div>
+
+
+        <!-- Lab Preview -->
+
+        <div class="lab-container">
+
+            <!-- Quiz Section -->
+
+            <div class="quiz">
+
+                <div class="quiz-header">
+                    <span>Task</span>
+                    <span>Hint</span>
+                    <span>⏱ 59:17</span>
+                </div>
+
+                <div class="progress">
+                    <span></span>
+                </div>
+
+                <h3>
+                    How many containers are running on this host?
+                </h3>
+
+                <button class="answer"
+                    onclick="checkAnswer(this, false)">
+                    0
+                </button>
+
+                <button class="answer"
+                    onclick="checkAnswer(this, false)">
+                    2
+                </button>
+
+                <button class="answer"
+                    onclick="checkAnswer(this, true)">
+                    3
+                </button>
+
+                <button class="answer"
+                    onclick="checkAnswer(this, false)">
+                    1
+                </button>
+
+            </div>
+
+
+            <!-- Terminal Section -->
+
+            <div class="terminal">
+
+                <div class="terminal-header">
+                    <span>Terminal 1</span>
+                    <span>🟥 Stop Lab</span>
+                </div>
+
+                <div class="terminal-body">
+
+                    <div class="command">
+                        ~ ➜ docker ps
+                    </div>
+
+                    <div>
+                        CONTAINER ID &nbsp; IMAGE &nbsp; COMMAND
+                    </div>
+
+                    <div>
+                        CREATED &nbsp; STATUS &nbsp; PORTS
+                    </div>
+
+                    <div>
+                        NAMES
+                    </div>
+
+                    <br>
+
+                    <div class="command">
+                        ~ ➜ <span id="terminal-output">_</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Students and Rating -->
+
+        <div class="social-proof">
+
+            <div class="enrolled">
+                👨🏻‍💻 👩🏻‍💻 👨🏽‍💻 👩🏼‍💻
+                &nbsp; 1M+ Enrolled
+            </div>
+
+            <div class="rating">
+                4.8/5
+                <span>★★★★☆</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Courses Section -->
+
+    <section class="courses">
+
+        <h2>
+            Skills, Careers, Certifications – All in One Place.
+        </h2>
+
+        <p>
+            Browse top courses, guided learning paths,
+            and career tracks tailored to your goals.
+        </p>
+
+        <div class="course-cards">
+
+            <!-- DevOps Course -->
+
+            <div class="course-card">
+
+                <h3>DevOps</h3>
+
+                <p>
+                    Learn Docker, Kubernetes, Jenkins,
+                    Git, Linux and CI/CD pipelines.
+                </p>
+
+                <a href="#">
+                    Explore DevOps →
+                </a>
+
+            </div>
+
+
+            <!-- Cloud Course -->
+
+            <div class="course-card">
+
+                <h3>Cloud Computing</h3>
+
+                <p>
+                    Build your cloud skills with AWS,
+                    Azure and real-world cloud labs.
+                </p>
+
+                <a href="#">
+                    Explore Cloud →
+                </a>
+
+            </div>
+
+
+            <!-- Linux Course -->
+
+            <div class="course-card">
+
+                <h3>Linux</h3>
+
+                <p>
+                    Master Linux commands, system
+                    administration and server management.
+                </p>
+
+                <a href="#">
+                    Explore Linux →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+        © 2026 DevOps Learning Platform.
+        All rights reserved.
+    </footer>
+
+
+    <!-- JavaScript for Quiz -->
+
+    <script>
+
+        function checkAnswer(button, isCorrect) {
+
+            const output =
+                document.getElementById("terminal-output");
+
+            if (isCorrect) {
+
+                button.classList.add("correct");
+
+                output.innerText = "Correct answer!";
+
+            } else {
+
+                button.classList.add("wrong");
+
+                output.innerText = "Try again!";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
