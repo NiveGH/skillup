@@ -1,0 +1,760 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillUp - Student Feedback</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #f5faff;
+            background:
+                radial-gradient(ellipse at top left, #00494c 0%, transparent 45%),
+                linear-gradient(135deg, #001b20, #002a30, #00171c);
+            min-height: 100vh;
+            padding: 20px 6%;
+        }
+
+        .feedback-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* HEADER */
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 9px 30px;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #00bce8, #4de1d3);
+            color: #00252c;
+            font-size: 13px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            color: #b6cbd3;
+            font-size: 17px;
+        }
+
+        /* OVERALL RATING */
+
+        .overall-rating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            width: fit-content;
+            margin: 0 auto 15px;
+            padding: 12px 35px;
+            background: rgba(0, 15, 20, 0.75);
+            border: 1px solid #07515c;
+            border-radius: 15px;
+        }
+
+        .rating-number {
+            font-size: 38px;
+            font-weight: 800;
+        }
+
+        .rating-number span {
+            font-size: 18px;
+            color: #b7cbd2;
+        }
+
+        .rating-divider {
+            width: 1px;
+            height: 40px;
+            background: #087080;
+        }
+
+        .rating-stars {
+            color: #00c5f0;
+            font-size: 25px;
+            letter-spacing: 3px;
+        }
+
+        .rating-info p {
+            font-size: 11px;
+            text-align: center;
+            margin-top: 2px;
+            color: #d1e1e7;
+        }
+
+        /* REVIEW CARDS */
+
+        .reviews {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+
+        .review-card {
+            background: rgba(0, 20, 25, 0.7);
+            border: 1px solid #087080;
+            border-radius: 17px;
+            padding: 14px 20px;
+            transition: 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            border-color: #00c8f0;
+            box-shadow: 0 0 18px rgba(0, 196, 240, 0.12);
+        }
+
+        .review-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00c5ed, #35dfd0);
+            color: #002b33;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .reviewer-info {
+            flex: 1;
+        }
+
+        .reviewer-info h3 {
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .reviewer-info p {
+            font-size: 12px;
+            color: #c0d1d8;
+        }
+
+        .review-score {
+            color: #39dce9;
+            font-size: 14px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .card-stars {
+            color: #00c5f0;
+            font-size: 20px;
+            letter-spacing: 2px;
+            margin: 8px 0 3px;
+        }
+
+        .review-text {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #e0ebef;
+            min-height: 48px;
+        }
+
+        .review-date {
+            color: #a7bbc3;
+            font-size: 11px;
+            margin-top: 5px;
+        }
+
+        /* SHARE REVIEW SECTION */
+
+        .share-section {
+            display: grid;
+            grid-template-columns: 1fr 220px;
+            gap: 30px;
+            align-items: center;
+            background: rgba(0, 20, 25, 0.65);
+            border: 1px solid #087080;
+            border-radius: 17px;
+            padding: 15px 22px;
+        }
+
+        .share-content h2 {
+            font-size: 23px;
+            margin-bottom: 4px;
+        }
+
+        .share-content > p {
+            color: #c0d1d8;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .input-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 40, 48, 0.8);
+            border: 1px solid #087080;
+            border-radius: 9px;
+            padding: 0 14px;
+            margin-bottom: 7px;
+            min-height: 38px;
+        }
+
+        .input-icon {
+            color: #a7c2cc;
+            font-size: 16px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #f5faff;
+            font-family: inherit;
+            font-size: 12px;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #a0b6c0;
+        }
+
+        select {
+            cursor: pointer;
+        }
+
+        select option {
+            background: #003038;
+            color: white;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 40px;
+            padding-top: 10px;
+        }
+
+        .star-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .star-rating button {
+            border: none;
+            background: none;
+            color: #00c5f0;
+            font-size: 22px;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .star-rating button:hover {
+            transform: scale(1.15);
+        }
+
+        .rating-label {
+            font-size: 10px;
+            color: #b6cbd3;
+            margin-left: 15px;
+        }
+
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 11px 35px;
+            border: none;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #00bce8, #35dfd0);
+            color: #00262d;
+            font-weight: 700;
+            font-size: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 18px rgba(0, 197, 240, 0.3);
+        }
+
+        /* SIDE ILLUSTRATION */
+
+        .feedback-illustration {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .chat-icons {
+            position: relative;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chat-bubble {
+            width: 90px;
+            height: 75px;
+            border: 5px solid #00bfe9;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 43px;
+            color: #00c5f0;
+            background: #00252c;
+            position: relative;
+            z-index: 2;
+        }
+
+        .chat-bubble::after {
+            content: "";
+            position: absolute;
+            bottom: -14px;
+            left: 17px;
+            width: 20px;
+            height: 20px;
+            background: #00252c;
+            border-left: 5px solid #00bfe9;
+            border-bottom: 5px solid #00bfe9;
+            transform: skewY(-35deg);
+        }
+
+        .chat-bubble-back {
+            position: absolute;
+            right: 12px;
+            top: 30px;
+            font-size: 45px;
+            color: #075b70;
+        }
+
+        .feedback-illustration h3 {
+            font-size: 15px;
+            line-height: 1.5;
+            margin-top: 10px;
+        }
+
+        .underline {
+            width: 85px;
+            height: 15px;
+            border-bottom: 3px solid #00c5f0;
+            border-radius: 50%;
+            margin: 5px auto;
+            transform: rotate(-10deg);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+            .reviews {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            .share-section {
+                grid-template-columns: 1fr;
+            }
+
+            .feedback-illustration {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px 4%;
+            }
+
+            .header h1 {
+                font-size: 25px;
+            }
+
+            .header p {
+                font-size: 14px;
+            }
+
+            .overall-rating {
+                padding: 10px 18px;
+                gap: 15px;
+            }
+
+            .rating-number {
+                font-size: 30px;
+            }
+
+            .rating-stars {
+                font-size: 18px;
+            }
+
+            .reviews {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .share-section {
+                padding: 15px;
+            }
+
+            .share-content h2 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="feedback-container">
+
+        <!-- HEADER -->
+
+        <header class="header">
+            <span class="badge">STUDENT FEEDBACK</span>
+            <h1>What Our Learners Say</h1>
+            <p>Real experiences from our learning community</p>
+        </header>
+
+        <!-- OVERALL RATING -->
+
+        <section class="overall-rating">
+            <div class="rating-number">
+                4.8 <span>/ 5</span>
+            </div>
+
+            <div class="rating-divider"></div>
+
+            <div class="rating-info">
+                <div class="rating-stars">★★★★★</div>
+                <p>Based on 2,000+ reviews</p>
+            </div>
+        </section>
+
+        <!-- STUDENT REVIEWS -->
+
+        <section class="reviews" id="reviews">
+
+            <article class="review-card">
+                <div class="review-top">
+                    <div class="avatar">AK</div>
+
+                    <div class="reviewer-info">
+                        <h3>Arun Kumar</h3>
+                        <p>AWS Cloud Practitioner</p>
+                    </div>
+
+                    <div class="review-score">5.0 ★</div>
+                </div>
+
+                <div class="card-stars">★★★★★</div>
+
+                <p class="review-text">
+                    "The course was easy to understand. Practical examples
+                    helped me learn cloud concepts from scratch."
+                </p>
+
+                <div class="review-date">◷ &nbsp; 2 days ago</div>
+            </article>
+
+            <article class="review-card">
+                <div class="review-top">
+                    <div class="avatar">SP</div>
+
+                    <div class="reviewer-info">
+                        <h3>Sarah Priya</h3>
+                        <p>Web Development</p>
+                    </div>
+
+                    <div class="review-score">5.0 ★</div>
+                </div>
+
+                <div class="card-stars">★★★★★</div>
+
+                <p class="review-text">
+                    "The projects helped me improve my coding skills
+                    and build confidence."
+                </p>
+
+                <div class="review-date">◷ &nbsp; 1 week ago</div>
+            </article>
+
+            <article class="review-card">
+                <div class="review-top">
+                    <div class="avatar">RV</div>
+
+                    <div class="reviewer-info">
+                        <h3>Rahul Verma</h3>
+                        <p>DevOps Fundamentals</p>
+                    </div>
+
+                    <div class="review-score">4.5 ★</div>
+                </div>
+
+                <div class="card-stars">★★★★☆</div>
+
+                <p class="review-text">
+                    "A great platform for beginners. The Linux and Git
+                    lessons were really useful!"
+                </p>
+
+                <div class="review-date">◷ &nbsp; 2 weeks ago</div>
+            </article>
+
+        </section>
+
+        <!-- SHARE YOUR EXPERIENCE -->
+
+        <section class="share-section">
+
+            <div class="share-content">
+
+                <h2>Share Your Experience</h2>
+
+                <p>
+                    Your feedback helps other learners choose the right course.
+                </p>
+
+                <form id="reviewForm">
+
+                    <div class="form-row">
+
+                        <div class="input-box">
+                            <span class="input-icon">♟</span>
+                            <input
+                                type="text"
+                                id="userName"
+                                placeholder="Your name"
+                                required
+                            >
+                        </div>
+
+                        <div class="input-box">
+                            <span class="input-icon">◧</span>
+
+                            <select id="course" required>
+                                <option value="">Select course</option>
+                                <option>AWS Cloud Practitioner</option>
+                                <option>Web Development</option>
+                                <option>DevOps Fundamentals</option>
+                                <option>Linux Administration</option>
+                                <option>Python Programming</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <!-- STAR RATING -->
+
+                    <div class="input-box">
+                        <div class="star-rating" id="starRating">
+                            <button type="button" data-rating="1">★</button>
+                            <button type="button" data-rating="2">★</button>
+                            <button type="button" data-rating="3">★</button>
+                            <button type="button" data-rating="4">★</button>
+                            <button type="button" data-rating="5">★</button>
+                        </div>
+
+                        <span class="rating-label">Your rating</span>
+                    </div>
+
+                    <!-- REVIEW TEXT -->
+
+                    <div class="input-box">
+                        <span class="input-icon">✎</span>
+
+                        <textarea
+                            id="reviewText"
+                            placeholder="Write your review..."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        ➤ &nbsp; Submit Review
+                    </button>
+
+                </form>
+
+            </div>
+
+            <!-- ILLUSTRATION -->
+
+            <div class="feedback-illustration">
+
+                <div class="chat-icons">
+                    <div class="chat-bubble-back">▤</div>
+                    <div class="chat-bubble">★</div>
+                </div>
+
+                <h3>
+                    Together, let's grow<br>
+                    and learn better!
+                </h3>
+
+                <div class="underline"></div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+        let selectedRating = 0;
+
+        const starButtons = document.querySelectorAll(
+            "#starRating button"
+        );
+
+        // Select star rating
+
+        starButtons.forEach(button => {
+            button.addEventListener("click", function () {
+
+                selectedRating = Number(this.dataset.rating);
+
+                starButtons.forEach(star => {
+                    const rating = Number(star.dataset.rating);
+
+                    star.style.color =
+                        rating <= selectedRating
+                            ? "#00c5f0"
+                            : "#31515a";
+                });
+
+            });
+        });
+
+        // Submit review
+
+        document.getElementById("reviewForm").addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+                const name = document.getElementById("userName").value;
+                const course = document.getElementById("course").value;
+                const review = document.getElementById("reviewText").value;
+
+                if (selectedRating === 0) {
+                    alert("Please select a star rating!");
+                    return;
+                }
+
+                const initials = name
+                    .trim()
+                    .split(" ")
+                    .map(word => word[0])
+                    .join("")
+                    .toUpperCase()
+                    .slice(0, 2);
+
+                const stars = "★".repeat(selectedRating) +
+                    "☆".repeat(5 - selectedRating);
+
+                const newReview = document.createElement("article");
+
+                newReview.className = "review-card";
+
+                newReview.innerHTML = `
+                    <div class="review-top">
+                        <div class="avatar">${initials}</div>
+
+                        <div class="reviewer-info">
+                            <h3>${escapeHTML(name)}</h3>
+                            <p>${escapeHTML(course)}</p>
+                        </div>
+
+                        <div class="review-score">
+                            ${selectedRating}.0 ★
+                        </div>
+                    </div>
+
+                    <div class="card-stars">${stars}</div>
+
+                    <p class="review-text">
+                        "${escapeHTML(review)}"
+                    </p>
+
+                    <div class="review-date">
+                        ◷ &nbsp; Just now
+                    </div>
+                `;
+
+                document.getElementById("reviews").prepend(newReview);
+
+                this.reset();
+
+                selectedRating = 0;
+
+                starButtons.forEach(star => {
+                    star.style.color = "#00c5f0";
+                });
+
+                alert("Thank you for sharing your review!");
+
+            }
+        );
+
+        // Prevent HTML injection in user input
+
+        function escapeHTML(text) {
+            return text.replace(/[&<>"']/g, function (character) {
+                const characters = {
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#039;"
+                };
+
+                return characters[character];
+            });
+        }
+    </script>
+
+</body>
+</html>
